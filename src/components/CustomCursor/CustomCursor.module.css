@@ -1,0 +1,43 @@
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: width 200ms ease, height 200ms ease, background 200ms ease;
+  will-change: transform;
+}
+
+.dotHover {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+}
+
+.halo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(94, 255, 216, 0.35);
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: width 250ms ease, height 250ms ease, border-color 250ms ease;
+  will-change: transform;
+}
+
+.haloHover {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(94, 255, 216, 0.65);
+}
+
+@media (max-width: 768px) {
+  .dot, .halo { display: none; }
+}

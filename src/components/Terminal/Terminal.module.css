@@ -1,0 +1,200 @@
+.terminal {
+  background: var(--bg-terminal);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glow-card), 0 0 0 1px rgba(94, 255, 216, 0.04) inset;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 440px;
+  max-height: 520px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: text;
+}
+
+.terminal.focused {
+  border-color: rgba(94, 255, 216, 0.20);
+  box-shadow: var(--glow-card), 0 0 0 1px rgba(94, 255, 216, 0.10) inset, 0 0 20px rgba(94, 255, 216, 0.04);
+}
+
+/* ── Title bar ────────────────────────────────── */
+.titleBar {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.red    { background: #FF5F56; }
+.yellow { background: #FFBD2E; }
+.green  { background: #27C93F; }
+
+.title {
+  flex: 1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.titleRight {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+
+/* ── Body ─────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.9rem 1.1rem 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(94, 255, 216, 0.18) transparent;
+}
+
+.body::-webkit-scrollbar { width: 3px; }
+.body::-webkit-scrollbar-thumb {
+  background: rgba(94, 255, 216, 0.18);
+  border-radius: 2px;
+}
+
+/* ── Lines ────────────────────────────────────── */
+.line {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* cmd — typed commands echoed back */
+.cmd { color: var(--accent); }
+
+/* output — standard output text */
+.output { color: var(--text-secondary); }
+
+/* success — green success messages */
+.success {
+  color: #27C93F;
+  font-weight: 600;
+}
+
+/* error — red error messages */
+.error { color: #FF5F56; }
+
+/* blank — spacing */
+.blank { display: block; height: 0.55rem; }
+
+/* menu — box-drawing characters */
+.menu {
+  color: var(--text-secondary);
+  opacity: 0.85;
+  font-size: 0.78rem;
+}
+
+/* ── Progress bar ─────────────────────────────── */
+.progressBar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.2rem 0;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-blue, #3B82F6));
+  border-radius: 2px;
+  transition: width 55ms ease;
+  box-shadow: 0 0 8px rgba(94, 255, 216, 0.45);
+}
+
+.progressPercent {
+  color: var(--accent);
+  min-width: 34px;
+  text-align: right;
+  font-size: 0.7rem;
+}
+
+/* ── Input line ───────────────────────────────── */
+.inputLine {
+  display: flex;
+  align-items: center;
+  padding-top: 0.05rem;
+  padding-bottom: 0.8rem;
+}
+
+.prompt {
+  color: var(--accent);
+  margin-right: 0.2rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  font-family: var(--font-mono);
+  font-size: inherit;
+  color: var(--text-primary);
+  caret-color: var(--accent);
+  min-width: 0;
+  line-height: inherit;
+  /* Remove any browser default input styles */
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Mobile ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .terminal {
+    min-height: 320px;
+    max-height: 380px;
+    font-size: 0.66rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    min-height: 280px;
+    max-height: 340px;
+  }
+
+  .body {
+    padding: 0.75rem 0.85rem 0.6rem;
+  }
+
+  .menu {
+    font-size: 0.65rem;
+  }
+}

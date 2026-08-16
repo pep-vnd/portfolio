@@ -1,0 +1,6 @@
+/* All global styles are imported in App.tsx via src/styles/globals.css */
+/* This file is intentionally minimal */
+
+#root {
+  min-height: 100svh;
+}

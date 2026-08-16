@@ -1,0 +1,98 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cluster {
+  padding: 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.14);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.cluster::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.6),
+    transparent
+  );
+}
+
+.cluster:hover {
+  border-color: rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.30);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.30), 0 0 20px rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.05);
+}
+
+.clusterHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.clusterNum {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--cluster-color);
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+}
+
+.clusterLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  background: rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.08);
+  color: var(--cluster-color);
+  border: 1px solid rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.16);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: default;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tag:hover {
+  background: rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.18);
+  border-color: rgba(var(--cluster-r), var(--cluster-g), var(--cluster-b), 0.35);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,127 @@
+.timeline {
+  margin-top: 2.5rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.block {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.timeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  padding-top: 0.2rem;
+  min-width: 50px;
+  position: relative;
+}
+
+.timeLabel::after {
+  content: '';
+  position: absolute;
+  top: 0.65rem;
+  right: -1rem;
+  width: 8px;
+  height: 1px;
+  background: var(--border);
+}
+
+.items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 1px solid var(--border);
+  padding-left: 1.5rem;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.item:last-child { border-bottom: none; }
+
+.visible .item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+  margin-left: -1.75rem;
+}
+
+.dotActive {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(94, 255, 216, 0.4);
+}
+
+.dotPending {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--text-muted);
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.itemText {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.itemActive .itemText {
+  color: var(--text-primary);
+}
+
+.itemNote {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  .block { flex-direction: column; gap: 0.75rem; }
+  .timeLabel::after { display: none; }
+}
