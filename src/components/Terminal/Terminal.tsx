@@ -13,7 +13,7 @@ interface Line {
 }
 
 /* ─── CV ────────────────────────────────────────────────── */
-const CV_PATH = '/Jose-Carmona-Vendoiro-CV.pdf';
+const CV_PATH = import.meta.env.BASE_URL + 'Jose-Carmona-Vendoiro-CV.pdf';
 
 async function cvExists(): Promise<boolean> {
   try {

@@ -21,7 +21,7 @@ function LinkedInIcon({ size = 18 }: { size?: number }) {
 }
 
 /* ─── CV download (mirrors Terminal logic, no React state needed) */
-const CV_PATH = '/Jose-Carmona-Vendoiro-CV.pdf';
+const CV_PATH = import.meta.env.BASE_URL + 'Jose-Carmona-Vendoiro-CV.pdf';
 
 async function handleCVDownload() {
   try {
@@ -62,7 +62,7 @@ export default function Hero() {
             <div className={styles.profileRing} aria-hidden="true" />
             <div className={styles.profileImg}>
               <img
-                src="/fotoperfil.png"
+                src={`${import.meta.env.BASE_URL}fotoperfil.png`}
                 alt="Jose Carmona Vendoiro"
                 className={styles.profilePhoto}
                 loading="eager"
