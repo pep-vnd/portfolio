@@ -100,12 +100,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
-  transform: scale(1.15); /* Zoom in to avoid transparent PNG edges and center better */
+  object-position: center;
+  /* Zoom in and push the image down and right (to move a bottom-right subject towards the top-left center) */
+  transform: scale(1.4) translate(4%, 4%);
   display: block;
   user-select: none;
   -webkit-user-drag: none;
-  background-color: #0d1829; /* Solid background in case of PNG transparency */
+  background-color: #0d1829;
 }
 
 .statusBadge {
